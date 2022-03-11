@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+from sklearn.svm import SVC
 
 """ 
     This is the code to accompany the Lesson 2 (SVM) mini-project.
@@ -22,7 +23,17 @@ features_train, features_test, labels_train, labels_test = preprocess()
 
 #########################################################
 ### your code goes here ###
+svClassifier = SVC(kernel='linear')
 
+t0 = time()
+
+svClassifier.fit(features_train, labels_train)
+print("Training time: ", round(time()-t0, 3), "s")
+
+svClassifier.predict(features_test)
+print("Predicting time: ", round(time()-t0, 3), "s")
+
+print(svClassifier.score(features_test, labels_test))
 
 #########################################################
 
